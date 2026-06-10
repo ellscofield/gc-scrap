@@ -107,33 +107,36 @@ function restartBook() {
 
 }
 
-function updateRelationshipTime() {
+const startDate = new Date("2026-05-01");
 
-    const startDate = new Date("2025-01-01T00:00:00");
+function updateTogetherTime() {
     const now = new Date();
 
-    const diff = now - startDate;
+    let years = now.getFullYear() - startDate.getFullYear();
+    let months = now.getMonth() - startDate.getMonth();
+    let days = now.getDate() - startDate.getDate();
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    if (days < 0) {
+        months--;
 
-    const years = Math.floor(days / 365);
-    const months = Math.floor((days % 365) / 30);
-    const remainingDays = (days % 365) % 30;
+        const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+        days += prevMonth.getDate();
+    }
 
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    const seconds = now.getSeconds();
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
 
-    document.getElementById("daysTogether").innerHTML = `
-        ❤️ ${years} Tahun<br>
-        ❤️ ${months} Bulan<br>
-        ❤️ ${remainingDays} Hari<br>
-        ❤️ ${hours} Jam ${minutes} Menit ${seconds} Detik
-    `;
+    document.getElementById("daysTogether").innerHTML =
+        `${years} Tahun ${months} Bulan ${days} Hari ❤️`;
 }
 
-updateRelationshipTime();
-setInterval(updateRelationshipTime, 1000);
+// update awal
+updateTogetherTime();
+
+// update otomatis tiap jam
+setInterval(updateTogetherTime, 1000 * 60 * 60);
 
 /* ===========================
    EFEK MENGETIK SURAT CINTA
