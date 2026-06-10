@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giellsyah & Chantika</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <audio id="music" loop>
+        <source src="assets/music/opening.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="book">
+
+        <!-- Cover -->
+        <div class="page cover">
+
+            <h1>Giellsyah & Chantika</h1>
+
+            <p class="subtitle">
+                Every page holds a memory ❤️
+            </p>
+
+            <div class="cover-decoration">
+                🌸 💙 🌸
+            </div>
+
+            <button onclick="startBook()">
+                Open Our Story 📖
+            </button>
+
+        </div>
+
+        <!-- Page 1 -->
+        <div class="page">
+            <span class="sticker s1">🌸</span>
+
+            <h2>Pertemuan Pertama</h2>
+
+            <div class="polaroid left">
+                <div class="polaroid-inner">
+                <div class="tape"></div>
+
+                <img src="assets/images/meet.jpg" alt="Pertemuan Pertama">
+
+                <span class="caption">
+                    Our First Meeting ❤️
+                </span>
+                </div>
+            </div>
+
+            <p>
+                Di antara jutaan kemungkinan,
+                aku tidak pernah menyangka bahwa
+                pertemuan sederhana itu akan menjadi
+                awal cerita terindah.
+            </p>
+        </div>
+
+        <!-- Page 2 -->
+        <div class="page">
+            <span class="sticker s2">🧸</span>
+
+            <h2>Mulai Dekat</h2>
+
+            <div class="polaroid right">
+
+                <img src="assets/images/close.jpg" alt="Mulai Dekat">
+
+                <span class="caption">
+                    Getting Closer 🌸
+                </span>
+
+            </div>
+
+            <p>
+                Dari obrolan kecil,
+                hingga menjadi seseorang yang
+                selalu ingin aku ceritakan setiap hari.
+            </p>
+        </div>
+
+        <!-- Page 3 -->
+        <div class="page">
+
+            <h2>Momen Favorit</h2>
+
+            <div class="polaroid center">
+
+                <img src="assets/images/moment.jpg" alt="Momen Favorit">
+
+                <span class="caption">
+                    Favorite Memory 💕
+                </span>
+
+            </div>
+
+            <p>
+                Setiap foto menyimpan cerita.
+                Setiap cerita menyimpan rasa.
+                Dan setiap rasa selalu kembali padamu.
+            </p>
+
+        </div>
+
+        <!-- Page 4 -->
+        <div class="page">
+
+            <h2>Berapa Lama Kita?</h2>
+
+            <div class="countdown" id="daysTogether">
+                0 Hari ❤️
+            </div>
+
+            <p>
+                Dan semoga masih banyak hari berikutnya
+                yang akan kita lalui bersama.
+            </p>
+
+        </div>
+
+        <!-- Page 5 -->
+        <div class="page final-page">
+
+            <h2>Untuk Chantika 💌</h2>
+
+                <div class="love-letter">
+                    <p id="typedLetter"></p>
+                </div>
+
+                <button onclick="restartBook()">
+                    Read Again ❤️
+                </button>
+
+        </div>
+
+    </div>
+
+    <div class="nav" id="navigation">
+
+    <button class="nav-btn prev"
+        onclick="prevPage()">
+        ❮
+    </button>
+
+    <button class="nav-btn next"
+        onclick="nextPage()">
+        ❯
+    </button>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

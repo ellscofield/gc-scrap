@@ -1,0 +1,588 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#ffd6ec,#d7e8ff);
+    overflow:hidden;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.heart{
+    position: fixed;
+    font-size: 20px;
+    pointer-events: none;
+    animation: floatUp 4s linear forwards;
+}
+
+@keyframes floatUp{
+    0%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100%{
+        transform: translateY(-300px);
+        opacity: 0;
+    }
+}
+
+.book{
+    position:relative;
+    width:900px;
+    height:600px;
+
+    perspective:2000px;
+
+    filter:
+        drop-shadow(
+            0 20px 30px rgba(0,0,0,.15)
+        );
+}
+
+.page{
+    position:absolute;
+    width:100%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #fff8fc
+        );
+
+    border:1px solid rgba(0,0,0,.05);
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+
+    transform-origin:left;
+    transition:1s;
+
+    padding:40px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    backface-visibility:hidden;
+}
+
+.flipped{
+    transform:rotateY(-180deg);
+}
+
+.cover{
+    background:linear-gradient(
+        135deg,
+        #ffc1e3,
+        #d7e8ff
+    );
+
+    overflow:hidden;
+}
+
+.cover h1{
+    text-shadow:
+        0 4px 15px rgba(255,105,180,.3);
+}
+
+.subtitle{
+    font-size:1.2rem;
+    margin:15px 0;
+}
+
+.cover-decoration{
+    font-size:2rem;
+    margin:20px 0;
+}
+
+.page h1{
+    font-family:'Caveat',cursive;
+    font-size:4rem;
+    color:#ff69b4;
+}
+
+.page h2{
+    font-family:'Caveat',cursive;
+    font-size:3rem;
+    color:#5d8eff;
+    margin-bottom:20px;
+}
+
+.page p{
+    text-align:center;
+    max-width:600px;
+    line-height:1.8;
+}
+
+.polaroid{
+    animation-duration:4s;
+    animation-iteration-count:infinite;
+    animation-timing-function:ease-in-out;
+}
+
+.polaroid.left{
+    animation-name:floatLeft;
+}
+
+.polaroid.right{
+    animation-name:floatRight;
+}
+
+.polaroid.center{
+    animation-name:floatCenter;
+}
+
+.polaroid-inner{
+    position:relative;
+
+    z-index: 1;
+
+    background:#fff;
+
+    padding:15px 15px 70px;
+
+    border-radius:4px;
+
+    box-shadow:
+        0 12px 25px rgba(0,0,0,.15),
+        0 2px 5px rgba(0,0,0,.1);
+
+    transition:.4s ease;
+
+.polaroid-inner.active{
+    transform:
+        scale(1.12)
+        rotate(0deg);
+
+    z-index:999;
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.25);
+}
+
+}
+
+/* Hover Desktop */
+@media (hover: hover){
+
+    .polaroid.left:hover{
+        transform:
+            rotate(-2deg)
+            scale(1.05);
+    }
+
+    .polaroid.right:hover{
+        transform:
+            rotate(2deg)
+            scale(1.05);
+    }
+
+    .polaroid.center:hover{
+        transform:
+            rotate(0deg)
+            scale(1.05);
+    }
+
+    .polaroid-inner:hover{
+        transform:scale(1.05);
+    }
+
+}
+
+/* Animasi Mobile & Desktop */
+@keyframes floatLeft{
+    0%,100%{
+        transform:
+            rotate(-5deg)
+            translateY(0);
+    }
+
+    50%{
+        transform:
+            rotate(-5deg)
+            translateY(-8px);
+    }
+}
+
+@keyframes floatRight{
+    0%,100%{
+        transform:
+            rotate(5deg)
+            translateY(0);
+    }
+
+    50%{
+        transform:
+            rotate(5deg)
+            translateY(-8px);
+    }
+}
+
+@keyframes floatCenter{
+    0%,100%{
+        transform:
+            rotate(-2deg)
+            translateY(0);
+    }
+
+    50%{
+        transform:
+            rotate(-2deg)
+            translateY(-8px);
+    }
+}
+
+.polaroid img{
+    width:260px;
+    height:260px;
+
+    object-fit:cover;
+
+    display:block;
+
+    border-radius:4px;
+}
+
+.caption{
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:18px;
+
+    text-align:center;
+
+    font-family:'Caveat',cursive;
+    font-size:1.8rem;
+
+    color:#666;
+}
+
+.tape{
+    display:none;
+}
+
+.polaroid::before,
+.polaroid::after{
+    content:"";
+
+    position:absolute;
+
+    width:70px;
+    height:22px;
+
+    background:
+        rgba(255,255,255,.6);
+
+    border:
+        1px solid rgba(255,255,255,.8);
+
+    backdrop-filter: blur(2px);
+
+    top:-12px;
+}
+
+.polaroid::before{
+    left:20px;
+    transform:rotate(-15deg);
+}
+
+.polaroid::after{
+    right:20px;
+    transform:rotate(15deg);
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+
+    background:#ff69b4;
+    color:white;
+    font-weight:600;
+}
+
+button:hover{
+    opacity:.9;
+}
+
+.restart-btn{
+    margin-top:30px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ff69b4,
+        #8aaeff
+    );
+
+    padding:14px 28px;
+
+    font-size:1rem;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.15);
+}
+
+.nav{
+    opacity:0;
+    visibility:hidden;
+    transition:.3s;
+}
+
+.nav.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.nav-btn{
+    position:fixed;
+
+    top:50%;
+    transform:translateY(-50%);
+
+    width:58px;
+    height:58px;
+
+    border:none;
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:1.8rem;
+    font-weight:bold;
+
+    background:rgba(255,255,255,.9);
+
+    color:#ff69b4;
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.12);
+
+    cursor:pointer;
+
+    transition:
+        all .25s ease;
+
+    z-index:9999;
+}
+
+.nav-btn:hover{
+    transform:
+        translateY(-50%)
+        scale(1.08);
+
+    background:white;
+
+    box-shadow:
+        0 15px 30px rgba(0,0,0,.18);
+}
+
+.prev{
+    left:calc(50% - 450px);
+}
+
+.next{
+    right:calc(50% - 450px);
+}
+
+.countdown{
+    font-size:3rem;
+    font-weight:bold;
+    color:#ff69b4;
+    margin-bottom:20px;
+}
+
+.love-letter{
+    background:#fff8fb;
+    padding:30px;
+    border-radius:15px;
+    line-height:2;
+    max-width:700px;
+}
+
+.sticker{
+    position:absolute;
+    font-size:2rem;
+}
+
+.s1{
+    top:20px;
+    left:20px;
+}
+
+.s2{
+    bottom:20px;
+    right:20px;
+}
+
+/* ===================================
+   RESPONSIVE MOBILE
+=================================== */
+
+@media (max-width:768px){
+
+    body{
+        overflow:auto;
+        padding:15px;
+    }
+
+    .book{
+        width:100%;
+        max-width:380px;
+        height:650px;
+    }
+
+    .page{
+        padding:20px;
+    }
+
+    .page h1{
+        font-size:2.4rem;
+        text-align:center;
+    }
+
+    .page h2{
+        font-size:2rem;
+        text-align:center;
+        margin-bottom:15px;
+    }
+
+    .page p{
+        font-size:.9rem;
+        line-height:1.6;
+        max-width:100%;
+    }
+
+    .subtitle{
+        font-size:1rem;
+        text-align:center;
+    }
+
+    .cover-decoration{
+        font-size:1.5rem;
+        margin:15px 0;
+    }
+
+    .polaroid{
+        margin:15px 0;
+        padding:10px 10px 50px;
+    }
+
+    .polaroid img{
+        width:180px;
+        height:180px;
+    }
+
+    .caption{
+        font-size:1.3rem;
+        bottom:12px;
+    }
+
+    .countdown{
+        font-size:1.7rem;
+        text-align:center;
+    }
+
+    .love-letter{
+        max-width:100%;
+        width:100%;
+        padding:20px;
+        line-height:1.7;
+        font-size:.9rem;
+    }
+
+    .restart-btn{
+        margin-top:15px;
+        padding:10px 20px;
+        font-size:.9rem;
+    }
+
+    .sticker{
+        font-size:1.5rem;
+    }
+
+    .nav-btn{
+        width:45px;
+        height:45px;
+        font-size:1.3rem;
+    }
+
+    .prev{
+        left:5px;
+    }
+
+    .next{
+        right:5px;
+    }
+}
+
+/* ===================================
+   EXTRA SMALL DEVICE
+=================================== */
+
+@media (max-width:480px){
+
+    .book{
+        max-width:330px;
+        height:580px;
+    }
+
+    .page{
+        padding:15px;
+    }
+
+    .page h1{
+        font-size:2rem;
+    }
+
+    .page h2{
+        font-size:1.7rem;
+    }
+
+    .page p{
+        font-size:.85rem;
+    }
+
+    .polaroid{
+        padding:10px 10px 45px;
+    }
+
+    .polaroid img{
+        width:150px;
+        height:150px;
+    }
+
+    .caption{
+        font-size:1.1rem;
+    }
+
+    .countdown{
+        font-size:1.3rem;
+    }
+
+    .love-letter{
+        padding:15px;
+        font-size:.85rem;
+    }
+
+    .nav-btn{
+        width:40px;
+        height:40px;
+        font-size:1.1rem;
+    }
+}
